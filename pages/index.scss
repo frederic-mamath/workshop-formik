@@ -37,6 +37,10 @@
       &:hover {
         background-color: lighten(Color(blue), 20%);
       }
+
+      &:disabled {
+        background-color: Color(grey);
+      }
     };
   }
 }

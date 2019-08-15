@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { path, values } from "ramda";
 
 import { readTasks, createTask, Task } from "ducks/tasks";
+import { validateCreateTask } from "helpers/form/validators";
 
 import styles from "./index.scss";
 
@@ -66,6 +67,10 @@ class Index extends Component<Props, State> {
     this.props.createTask(this.state);
   };
 
+  handleFormikSubmit = (values: State) => {
+    this.props.createTask(values);
+  };
+
   render() {
     const { what, why, how, when } = this.state;
     console.log({ props: this.props, state: this.state });
@@ -111,9 +116,17 @@ class Index extends Component<Props, State> {
           ))}
         </ul>
         <Formik
+          initialValues={{
+            what: "",
+            why: "",
+            how: "",
+            when: ""
+          }}
+          onSubmit={this.handleFormikSubmit}
           render={props => {
             const { errors, handleChange, isValid, values } = props;
 
+            console.log({ errors, isValid, values });
             return (
               <Form className={styles.form}>
                 <input
@@ -123,6 +136,7 @@ class Index extends Component<Props, State> {
                   onChange={handleChange}
                   value={values.what}
                 />
+                {errors.what && <div>Le champs ne doit pas être vide</div>}
                 <input
                   type="text"
                   placeholder="Why"
@@ -130,6 +144,7 @@ class Index extends Component<Props, State> {
                   onChange={handleChange}
                   value={values.why}
                 />
+                {errors.why && <div>Le champ ne doit pas être vide</div>}
                 <input
                   type="text"
                   placeholder="How"
@@ -137,6 +152,7 @@ class Index extends Component<Props, State> {
                   onChange={handleChange}
                   value={values.how}
                 />
+                {errors.how && <div>Le champ ne doit pas être vide</div>}
                 <input
                   type="date"
                   placeholder="When"
@@ -144,10 +160,12 @@ class Index extends Component<Props, State> {
                   onChange={handleChange}
                   value={values.when}
                 />
-                <input type="submit" value="Create Task" />
+                {errors.when && <div>Le champ ne doit pas être vide</div>}
+                <input type="submit" value="Create Task" disabled={!isValid} />
               </Form>
             );
           }}
+          validate={validateCreateTask}
         />
       </div>
     );
