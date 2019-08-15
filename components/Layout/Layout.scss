@@ -1,0 +1,22 @@
+@import 'styles/sizes.scss';
+
+.view {
+  .body {
+    display: flex;
+  }
+
+  .left {
+    display: flex;
+    width: Grid(32);
+  }
+
+  .middle {
+    display: flex;
+    width: 100%;
+  }
+
+  .right{
+    display: flex;
+    width: Grid(32);
+  }
+}
