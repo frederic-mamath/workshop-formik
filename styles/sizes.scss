@@ -1,0 +1,5 @@
+$defaultGridBase: 8px;
+
+@function Grid($n) {
+  @return $n * $defaultGridBase;
+}
