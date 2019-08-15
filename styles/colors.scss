@@ -1,0 +1,12 @@
+@function Color($color) {
+  $_colors: (
+    red: rgba(255, 0, 0, 0.6),
+    blue: rgba(0, 0, 255, 0.6),
+    green: rgba(0, 255, 0, 0.6),
+    grey: rgba(30, 30, 30, 0.6),
+    white: #FFFFFF,
+    black: #000000,
+  );
+
+  @return map-get($_colors, $color);
+}
