@@ -1,0 +1,7 @@
+# Ignore node modules
+
+.env
+.next
+.vscode
+node_modules
+now.json
