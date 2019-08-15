@@ -1,0 +1,42 @@
+@import 'styles/colors.scss';
+@import 'styles/sizes.scss';
+
+.view {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .tasks {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+  .form {
+    display:flex;
+    flex-direction: column;
+    width: Grid(32);
+  
+    input {
+      margin: Grid(1) 0;
+      padding: 0 Grid(2);
+    }
+  
+    input[type="text"],
+    input[type="date"] {
+      height: Grid(3);
+    };
+  
+    input[type="submit"] {
+      background-color: Color(blue);
+      border: none;
+      color: Color(white);
+      height: Grid(6);
+      outline: none;
+      transition: all ease-in-out 125ms;
+  
+      &:hover {
+        background-color: lighten(Color(blue), 20%);
+      }
+    };
+  }
+}
