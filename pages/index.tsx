@@ -123,7 +123,7 @@ class Index extends Component<Props, State> {
             when: ""
           }}
           onSubmit={this.handleFormikSubmit}
-          render={props => {
+          render={({ errors, handleChange, isValid, values }) => {
             const { errors, handleChange, isValid, values } = props;
 
             console.log({ errors, isValid, values });
